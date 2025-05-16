@@ -7,51 +7,42 @@
     <style>
       body {
         margin: 0;
-        padding: 0;
-        background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e'); /* You can change this URL */
+        height: 100vh;
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
         background-size: cover;
         background-position: center;
-        height: 100vh;
         font-family: Arial, sans-serif;
         color: white;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-shadow: 1px 1px 5px #000;
       }
-
       h1 {
-        font-size: 3em;
-        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px 40px;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
     <h1>Welcome to Bible Bot</h1>
 
-    <!-- Load and start the Voiceflow chatbot automatically -->
     <script type="text/javascript">
       (function(d, t) {
-        var v = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        v.onload = function () {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
           window.voiceflow.chat.load({
-            verify: { projectID: "682561538a41973351f293f3" }, // Replace with your actual project ID if different
-            url: "https://general-runtime.voiceflow.com",
-            versionID: "production",
-            autostart: true
+            verify: { projectID: '682561538a41973351f293f3' },  // Your project ID here
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            autoOpen: true   // This makes the chatbot start automatically on page load
           });
-
-          // Automatically open the chatbot on page load
-          setTimeout(() => {
-            const button = document.querySelector("vf-chat-button");
-            if (button) button.click();
-          }, 2000);
         };
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
         v.type = "text/javascript";
         s.parentNode.insertBefore(v, s);
-      })(document, "script");
+      })(document, 'script');
     </script>
   </body>
 </html>
