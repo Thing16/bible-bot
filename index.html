@@ -88,6 +88,11 @@
       message: 'Welcome to Bible Bot. I’m here to encourage you with Scripture. How are you feeling today?',
       delay: 0
     }
+  }).then(() => {
+    // Open the chat window after a short delay
+    setTimeout(() => {
+      window.voiceflow.chat.open();
+    }, 500);
   });
 </script>
 
