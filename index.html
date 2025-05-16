@@ -4,29 +4,54 @@
     <meta charset="UTF-8" />
     <title>Bible Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e'); /* You can change this URL */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 1px 1px 5px #000;
+      }
+
+      h1 {
+        font-size: 3em;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <h1 style="text-align:center;">Welcome to Bible Bot</h1>
+    <h1>Welcome to Bible Bot</h1>
 
-    <!-- ✅ New Voiceflow Webchat Embed (widget-next) -->
+    <!-- Load and start the Voiceflow chatbot automatically -->
     <script type="text/javascript">
       (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
+        var v = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        v.onload = function () {
           window.voiceflow.chat.load({
-            verify: { projectID: '682561538a41973351f293f3' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            }
+            verify: { projectID: "682561538a41973351f293f3" }, // Replace with your actual project ID if different
+            url: "https://general-runtime.voiceflow.com",
+            versionID: "production",
+            autostart: true
           });
+
+          // Automatically open the chatbot on page load
+          setTimeout(() => {
+            const button = document.querySelector("vf-chat-button");
+            if (button) button.click();
+          }, 2000);
         };
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
         v.type = "text/javascript";
         s.parentNode.insertBefore(v, s);
-      })(document, 'script');
+      })(document, "script");
     </script>
-
   </body>
 </html>
