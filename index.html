@@ -8,7 +8,8 @@
       body {
         margin: 0;
         height: 100vh;
-        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+        background-image: url('https://images.unsplash.com/photo-1519486777101-86c63d3ab4e9?auto=format&fit=crop&w=1470&q=80');
+        /* This is a Bible book image */
         background-size: cover;
         background-position: center;
         font-family: Arial, sans-serif;
@@ -19,9 +20,10 @@
         align-items: center;
       }
       h1 {
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
         padding: 20px 40px;
         border-radius: 10px;
+        text-align: center;
       }
     </style>
   </head>
@@ -33,10 +35,14 @@
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
         v.onload = function() {
           window.voiceflow.chat.load({
-            verify: { projectID: '682561538a41973351f293f3' },  // Your project ID here
+            verify: { projectID: '682561538a41973351f293f3' },
             url: 'https://general-runtime.voiceflow.com',
             versionID: 'production',
-            autoOpen: true   // This makes the chatbot start automatically on page load
+            autoOpen: true,
+            onReady: () => {
+              // Send greeting message to user when chatbot loads
+              window.voiceflow.chat.send('Hello! Welcome to Bible Bot. How can I support you today?');
+            }
           });
         };
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
