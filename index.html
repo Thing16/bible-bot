@@ -75,7 +75,7 @@
   import vf from 'https://cdn.voiceflow.com/widget/bundle.mjs';
 
   vf.chat.load({
-    verify: { projectID: '682561538a41973351f293f3' },
+    verify: { projectID: 'YOUR_PROJECT_ID' },
     url: 'https://general-runtime.voiceflow.com',
     versionID: 'production',
     container: document.getElementById('vf-container'),
@@ -89,12 +89,12 @@
       delay: 0
     }
   }).then(() => {
-    // Open the chat window after a short delay
     setTimeout(() => {
       window.voiceflow.chat.open();
     }, 500);
   });
 </script>
+
 
 
   <!-- Slideshow Script -->
