@@ -1,72 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Bible Bot</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-        font-family: Arial, sans-serif;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: background-image 1s ease-in-out;
-      }
-      h1 {
-        background: rgba(0, 0, 0, 0.6);
-        padding: 20px 40px;
-        border-radius: 10px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to Bible Bot</h1>
+<head>
+  <meta charset="UTF-8" />
+  <title>Bible Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-    <script>
-      const calmingImages = [
-        'https://images.unsplash.com/photo-1?auto=format&fit=crop&w=1470&q=80',
-        'https://images.unsplash.com/photo-2?auto=format&fit=crop&w=1470&q=80',
-        'https://images.unsplash.com/photo-3?auto=format&fit=crop&w=1470&q=80',
-        // ... add up to 40 URLs like above
-        'https://images.unsplash.com/photo-40?auto=format&fit=crop&w=1470&q=80'
-      ];
-      
-      let currentIndex = 0;
-      
-      function changeBackground() {
-        document.body.style.backgroundImage = `url('${calmingImages[currentIndex]}')`;
-        currentIndex = (currentIndex + 1) % calmingImages.length;
-      }
-      
-      changeBackground();
-      setInterval(changeBackground, 10000);
-    </script>
+    .slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-    <script type="text/javascript">
-      (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '682561538a41973351f293f3' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            autoOpen: true,
-            onReady: () => {
-              window.voiceflow.chat.send('Hello! Welcome to Bible Bot. How can I support you today?');
-            }
-          });
-        };
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-        v.type = "text/javascript";
-        s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
-  </body>
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 3em;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .chat-container {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow">
+    <!-- 40 calming Bible-related image URLs -->
+    <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3" class="slide active">
+    <img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d1" class="slide">
+    <img src="https://images.unsplash.com/photo-1526304640581-02b979504b9a" class="slide">
+    <img src="https://images.unsplash.com/photo-1506459225024-1428097a7e18" class="slide">
+    <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913" class="slide">
+    <img src="https://images.unsplash.com/photo-1533907650686-70576141c030" class="slide">
+    <img src="https://images.unsplash.com/photo-1534351590666-13e2eaa5f9de" class="slide">
+    <img src="https://images.unsplash.com/photo-1603889915429-69b6c5fcdc4e" class="slide">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="slide">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="slide">
+    <img src="https://images.unsplash.com/photo-1549887534-3ec93abae7d5" class="slide">
+    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68" class="slide">
+    <img src="https://images.unsplash.com/photo-1557682224-5b8590cd9ec5" class="slide">
+    <img src="https://images.unsplash.com/photo-1581349482152-cb27e2a3e9c9" class="slide">
+    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" class="slide">
+    <img src="https://images.unsplash.com/photo-1555431189-0fabf9c48f3d" class="slide">
+    <img src="https://images.unsplash.com/photo-1549880187-7ffb3f8f7c84" class="slide">
+    <img src="https://images.unsplash.com/photo-1511485977113-f9bdb646be01" class="slide">
+    <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a" class="slide">
+    <img src="https://images.unsplash.com/photo-1476610182048-b716b8518aae" class="slide">
+    <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea" class="slide">
+    <img src="https://images.unsplash.com/photo-1509017174183-00b2d06f7a7a" class="slide">
+    <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9" class="slide">
+    <img src="https://images.unsplash.com/photo-1529059997568-3b1c2c446e0f" class="slide">
+    <img src="https://images.unsplash.com/photo-1501228281761-64c5e0a6b06d" class="slide">
+    <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde" class="slide">
+    <img src="https://images.unsplash.com/photo-1514512364185-4c62b4d43ca4" class="slide">
+    <img src="https://images.unsplash.com/photo-1483721310020-03333e577078" class="slide">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="slide">
+    <img src="https://images.unsplash.com/photo-1522173881840-728d62e0925c" class="slide">
+    <img src="https://images.unsplash.com/photo-1527285345574-1808c904f74c" class="slide">
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" class="slide">
+    <img src="https://images.unsplash.com/photo-1470770842044-86a58b1d7ff1" class="slide">
+    <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13" class="slide">
+    <img src="https://images.unsplash.com/photo-1524777310980-7ecf52f2869e" class="slide">
+    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4" class="slide">
+    <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334" class="slide">
+    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" class="slide">
+    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b4e" class="slide">
+    <img src="https://images.unsplash.com/photo-1508612761958-e931fa56f0de" class="slide">
+  </div>
+
+  <h1>Welcome to Bible Bot</h1>
+
+  <!-- Voiceflow chat bot loads here -->
+  <div class="chat-container"></div>
+
+  <!-- Background slideshow script -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 8000);
+  </script>
+
+  <!-- Voiceflow Chatbot (auto starts) -->
+  <script type="text/javascript">
+    (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '682561538a41973351f293f3' }, // Replace with your actual projectID
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          autoOpen: true,
+          startMessage: "Hello! Welcome to Bible Bot. How can I help you today?"
+        });
+      };
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+      v.type = "module";
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
 </html>
