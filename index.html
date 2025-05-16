@@ -71,21 +71,26 @@
   </div>
 
   <!-- Chatbot script -->
-  <script type="module">
-    import vf from 'https://cdn.voiceflow.com/widget/bundle.mjs';
+<script type="module">
+  import vf from 'https://cdn.voiceflow.com/widget/bundle.mjs';
 
-    vf.chat.load({
-      verify: { projectID: '682561538a41973351f293f3' },
-      url: 'https://general-runtime.voiceflow.com',
-      versionID: 'production',
-      autoplay: true,
-      container: document.getElementById('vf-container'),
-      startScreen: {
-        message: 'Welcome to Bible Bot. I’m here to encourage you with Scripture. How are you feeling today?',
-        delay: 0
-      }
-    });
-  </script>
+  vf.chat.load({
+    verify: { projectID: '682561538a41973351f293f3' },
+    url: 'https://general-runtime.voiceflow.com',
+    versionID: 'production',
+    container: document.getElementById('vf-container'),
+    render: {
+      mode: 'embedded',
+      target: document.getElementById('vf-container'),
+    },
+    autostart: true,
+    startScreen: {
+      message: 'Welcome to Bible Bot. I’m here to encourage you with Scripture. How are you feeling today?',
+      delay: 0
+    }
+  });
+</script>
+
 
   <!-- Slideshow Script -->
   <script>
